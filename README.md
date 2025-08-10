@@ -44,3 +44,4 @@ The simulator includes examples of:
 - Maximum 20 qubits (due to memory constraints of 2^20 amplitudes)
 - Classical simulation (not actual quantum hardware)
 - Double precision floating point arithmetic# Quantum-Simulator
+# Quantum-Simulator
