@@ -12,6 +12,17 @@ void quantum_utils_print_separator(const char* title);
 double quantum_utils_random_double(double min, double max);
 int quantum_utils_random_int(int min, int max);
 
+/* Input parsing helpers */
+typedef struct {
+    char input[100];
+    int target;
+    int db_size;
+    const char** database;
+} InputParseResult;
+
+InputParseResult quantum_utils_parse_user_input(const char* prompt, const char** database, int db_size);
+void quantum_utils_display_probabilities(QuantumState *state, const char** database, int db_size, int target);
+
 /* State preparation utilities */
 void quantum_utils_create_bell_state(QuantumState *state, int qubit1, int qubit2);
 void quantum_utils_create_ghz_state(QuantumState *state);
@@ -25,8 +36,11 @@ QuantumCircuit* quantum_utils_create_grover_circuit(int num_qubits, int target);
 void quantum_utils_add_grover_oracle(QuantumCircuit *circuit, int target, int num_qubits);
 void quantum_utils_add_grover_diffusion(QuantumCircuit *circuit, int num_qubits);
 void quantum_utils_apply_grover_oracle(QuantumState *state, int target);
-void quantum_utils_apply_grover_diffusion(QuantumState *state);
-void quantum_utils_apply_grover_diffusion_sparse(QuantumState *state, int* valid_states, int num_valid);
+
+/* 🔧 FIXED: Updated signature to handle both full and sparse diffusion */
+void quantum_utils_apply_grover_diffusion(QuantumState *state, int* valid_states, int num_valid);
+/* Convenience wrapper for full diffusion (backward compatibility) */
+void quantum_utils_apply_grover_diffusion_full(QuantumState *state);
 
 /* Algorithm implementations */
 void quantum_utils_run_grover_algorithm(QuantumState *state);
@@ -45,6 +59,10 @@ void quantum_utils_controlled_phase(QuantumState *state, int control, int target
 int quantum_utils_gcd(int a, int b);
 int quantum_utils_find_period(int a, int N);
 int quantum_utils_is_prime(int n);
+
+/* Demo function template */
+typedef void (*DemoOperation)(QuantumState*);
+void quantum_utils_run_demo(const char* title, int num_qubits, DemoOperation operation);
 
 /* Demonstration functions */
 void quantum_utils_demo_basic_gates(void);

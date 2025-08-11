@@ -14,13 +14,12 @@
 #include "complex_math.h"
 
 void print_welcome_message(void) {
-    printf("╔══════════════════════════════════════════════════════════════════╗\n");
+    printf("╔═════════════════════════════════════════════════════════════════╗\n");
     printf("║                    Quantum Computer Simulator                   ║\n");
-    printf("║                         Written in C                            ║\n");
-    printf("║                                                                  ║\n");
-    printf("║  Interactive quantum simulator supporting up to 20 qubits       ║\n");
-    printf("║  Includes Grover's and Shor's algorithms                        ║\n");
-    printf("╚══════════════════════════════════════════════════════════════════╝\n\n");
+    printf("║                           Written in C                          ║\n");
+    printf("║                                                                 ║\n");
+    printf("║    Interactive quantum simulator supporting up to 20 qubits     ║\n");
+    printf("╚═════════════════════════════════════════════════════════════════╝\n\n");
 }
 
 void interactive_mode(void) {
@@ -291,8 +290,5 @@ int main(void) {
     interactive_mode();
     
     printf("\nThank you for using the Quantum Computer Simulator!\n");
-    printf("This simulator demonstrates the beauty of quantum mechanics\n");
-    printf("and the fascinating world of quantum computing.\n\n");
-    
     return 0;
 }
